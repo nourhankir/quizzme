@@ -97,7 +97,7 @@ const questions = {
     const quizResults = JSON.parse(localStorage.getItem("quizResults") || "{}");
   
     if (!quizResults[user]) quizResults[user] = {};
-    
+    const submissionDate = new Date().toLocaleString(); // Get readable date & time
  
 quizResults[user][selectedQuiz] = {
   score,
