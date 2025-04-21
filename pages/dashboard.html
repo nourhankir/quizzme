@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - QwizMe</title>
+  <link rel="stylesheet" href="../styles/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <header class="dashboard-header">
+  
+      
+      <div class="dashboard-header-text">
+    <h1><i class="fas fa-user-shield"></i> Admin Dashboard</h1>
+    <p>Overview of all quiz submissions</p>
+    </div>
+  
+    
+    <input type="button" value="Logout" id="logout-btn" onclick="logout()" />
+  </header>
+  <div class="dashboard-controls">
+    <input type="text" id="filter-user" placeholder="Filter by email..." />
+    <button id="sort-date">Sort by date</button>
+  </div>
+  
+
+  <main class="dashboard-main">
+    <table id="results-table">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Quiz</th>
+          <th>Score</th>
+          <th>Time</th>
+          
+          <th>Submission Date</th> <!-- Add this -->
+      <th>Mistakes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- JS will populate this -->
+      </tbody>
+    </table>
+  </main>
+
+  <script src="../scripts/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+.login-container {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding-top: 0; /* Remove padding */
+     /* Ensure no margin at the top */
+}
+  
+.login-box {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+  
+.google-signin {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+  
+.google-signin i {
+    margin-right: 8px;
+    color: #db4437;
+}
+  
+.divider {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+}
+  
+form {
+    display: flex;
+    flex-direction: column; /* Stack inputs and labels vertically */
+    
+}
+
+form div {
+    display: flex;
+    align-items: center; /* Align input and label vertically */
+    
+}
+
+form label {
+    font-size: 14px;
+    color: #333;
+    display: block; /* Ensure labels are block elements */
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    display: block; /* Ensure inputs are block elements */
+}
+  
+.submit-btn {
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top:0px;
+}
+  
+
+.login-links a {
+    font-size: 14px;
+    color: #007B8F;
+    text-decoration: none;
+    display: block;
+}
+.show-password {
+    
+    font-size: 14px;
+    color: #444;
+    text-align: left;
+  }
+  
+  .show-password label {
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .show-password input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+    
+    width: 20px;
+  }

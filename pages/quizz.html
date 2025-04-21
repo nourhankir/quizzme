@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QwizMe - Quiz</title>
+  <link rel="stylesheet" href="../styles/quizz.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+      <div class="nav-left">
+        <a href="home.html"><img src="../images/qwizme-logo.png" alt="QwizMe Logo" class="nav-logo" /></a>
+        <ul class="nav-menu">
+          <li class="dropdown">
+            <a href="#">Who it’s for</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Education</a></li>
+              <li><a href="#">Recruiters & Businesses</a></li>
+              <li><a href="#">Private Practice</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <a href="pages/login.html" target="_blank" class="nav-login">Login</a>
+    </nav>
+
+  <!-- Quiz Header with Progress and Timer -->
+  <div class="quiz-header">
+    <div class="section-progress">
+      <div class="section">Section 1: Quiz in Progress <span id="progress-count">0/3</span></div>
+    </div>
+    <div class="timer">
+      <i class="fas fa-clock"></i>
+      Time Left: <span id="time-left">03:00</span>
+    </div>
+  </div>
+
+  <!-- Quiz Main Area -->
+  <main class="quiz-container">
+    <h2 id="quiz-title">Welcome to the Quiz!</h2>
+    <form id="quiz-form">
+      <div id="questions-wrapper">
+        <!-- JS will inject questions here -->
+      </div>
+      <button type="submit" class="submit-btn">Submit Answers</button>
+    </form>
+    <div id="result-box" class="hidden">
+      <h3>quiz completed</h3>
+      <p id="score-display"></p>
+      <p id="time-display"></p>
+      <p id="mistakes-list"></p>
+      <input type="button" value="Go back to home page"  id="home-btn" />
+    </div>
+  </main>
+
+  <script src="../scripts/quizz.js"></script>
+</body>
+</html>

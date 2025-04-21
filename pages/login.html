@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QwizMe</title>
+  <link rel="stylesheet" href="../styles/login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../styles/index.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="main-nav">
+    <div class="nav-left">
+      <a href="../home.html"><img src="../images/qwizme-logo.png" alt="QwizMe Logo" class="nav-logo" /></a>
+      <ul class="nav-menu">
+        <li class="dropdown">
+          <a href="#">Who it’s for</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Recruiters & Businesses</a></li>
+            <li><a href="#">Private Practice</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <a href="#" class="nav-login">Login</a>
+  </nav>
+  
+  <!-- Login Box -->
+  <div class="login-box">
+    <h2>Sign in to QwizMe</h2>
+
+    <button class="google-signin">
+      <i class="fab fa-google"></i> Sign in with Google
+    </button>
+
+    <div class="divider">or sign in with email</div>
+
+    <form id="login-form">
+      <input type="email" placeholder="you@example.com" required id="login-email" />
+      <input type="password" placeholder="Password" required id="login-password" />
+      <div class="show-password">
+        <label>
+          <input type="checkbox" id="show-password-toggle" onclick="togglePassword()" />
+          Show password
+        </label>
+      </div>
+      <div class="show-password">
+        
+        <input type="checkbox" id="remember-me" />
+        <label for="remember-me">Remember me</label>
+      </div>
+    
+      <button type="submit" class="submit-btn">Sign in</button>
+      <p id="login-msg"></p> <!-- ✅ Message element -->
+    </form>
+
+    <div class="login-links">
+      <a href="#">I forgot my password</a><br>
+      <a href="./register.html">I don't yet have an account</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <h3>Contact Us</h3>
+      <p><i class="fas fa-envelope"></i> support@qwizme.com</p>
+      <p><i class="fas fa-phone"></i> 76871045</p>
+      <p><i class="fas fa-map-marker-alt"></i> Bchemoun</p>
+    </div>
+  </footer>
+
+  <script src="../scripts/login.js"></script>
+</body>
+</html>

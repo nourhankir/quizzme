@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join QwizMe</title>
+  <link rel="stylesheet" href="../styles/register.css" />
+  <link rel="stylesheet" href="../styles/index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-left">
+      <a href="../home.html"><img src="../images/qwizme-logo.png" alt="QwizMe Logo" class="nav-logo" /></a>
+      <ul class="nav-menu">
+        <li class="dropdown">
+          <a href="#">Who it’s for</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Education</a></li>
+            <li><a href="#">Businesses</a></li>
+            <li><a href="#">Training</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <a href="login.html" class="nav-login">Login</a>
+  </nav>
+
+  <!-- Register Box -->
+  <div class="register-container">
+    <div class="register-box">
+      <h1>Join QwizMe now</h1>
+      <p>QwizMe makes your assessment process easy and smart. Sign up now and explore powerful features.</p>
+
+      <form id="register-form">
+        <input type="email" id="register-email" placeholder="you@example.com" required />
+        <input type="password" id="register-password" placeholder="Create password" required />
+        <input type="password" id="confirm-password" placeholder="Confirm password" required />
+        <div class="show-password">
+            <label>
+              <input type="checkbox" id="show-password-toggle" onclick="togglePassword()" />
+              Show password
+            </label>
+          </div>
+          
+          
+        <button type="submit" class="submit-btn"><a href="quiz.html">Get started</a></button>
+        <p id="register-msg"></p>
+      </form>
+
+      <div class="divider">- or -</div>
+
+      <button class="google-signup">
+        <i class="fab fa-google"></i> Sign up with Google
+      </button>
+    </div>
+    <img src="../images/animation.svg" alt="Animation" class="animation-image" />
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <h3>Contact Us</h3>
+      <p><i class="fas fa-envelope"></i> support@qwizme.com</p>
+      <p><i class="fas fa-phone"></i> 76871045</p>
+      <p><i class="fas fa-map-marker-alt"></i> Bchemoun</p>
+    </div>
+  </footer>
+
+  <script src="../scripts/auth.js"></script>
+</body>
+</html>
+
