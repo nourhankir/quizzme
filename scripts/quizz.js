@@ -1,5 +1,5 @@
-// Quiz questions
-const questions = {
+window.addEventListener("DOMContentLoaded", () => {
+  const questions = {
     math: [
       { question: "What is 5 + 7?", options: ["10", "12", "14"], correct: 1 },
       { question: "What is 8 × 3?", options: ["24", "21", "26"], correct: 0 },
@@ -11,7 +11,7 @@ const questions = {
       { question: "The gas we breathe?", options: ["Oxygen", "Nitrogen", "Helium"], correct: 0 }
     ]
   };
-  
+
   const selectedQuiz = localStorage.getItem("selectedQuiz");
   const quizData = questions[selectedQuiz]?.slice(0, 3);
   const form = document.getElementById("quiz-form");
@@ -23,14 +23,17 @@ const questions = {
   const mistakesList = document.getElementById("mistakes-list");
   const resultBox = document.getElementById("result-box");
   const progressCount = document.getElementById("progress-count");
-  
+  const questionsWrapper = document.getElementById("questions-wrapper");
+  const home_btn = document.getElementById("home-btn");
+
   let timer = 180;
   let timerInterval;
   let startTime = new Date();
-  
+
+  // Set quiz title
   title.textContent = `${selectedQuiz.charAt(0).toUpperCase() + selectedQuiz.slice(1)} Quiz`;
-  
-  // Display questions
+
+  // Render questions
   quizData.forEach((q, index) => {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
@@ -42,10 +45,10 @@ const questions = {
           ${opt}
         </label><br>`;
     });
-    form.insertBefore(wrapper, submitBtn);
+    questionsWrapper.appendChild(wrapper);
   });
-  
-  // Timer countdown
+
+  // Start timer
   function startTimer() {
     timerInterval = setInterval(() => {
       timer--;
@@ -59,67 +62,85 @@ const questions = {
     }, 1000);
   }
   startTimer();
-  
-  // Submit logic
+
+  // Handle submit
   submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
     submitQuiz();
   });
-  const home_btn = document.getElementById("home-btn");
-  home_btn.addEventListener("click", function () {
-    window.location.href = "../pages/quiz.html";
-  });
 
-  
+  if (home_btn) {
+    home_btn.addEventListener("click", () => {
+      window.location.href = "../pages/quiz.html";
+    });
+  }
+
   function submitQuiz() {
     clearInterval(timerInterval);
-  
+
     let score = 0;
     let mistakes = [];
-  
+
     quizData.forEach((q, i) => {
       const selected = form.querySelector(`input[name="q${i}"]:checked`);
       if (selected) {
         if (parseInt(selected.value) === q.correct) {
           score++;
         } else {
-          mistakes.push({ question: q.question, wrongAnswer: q.options[selected.value], correctAnswer: q.options[q.correct] });
+          mistakes.push({
+            question: q.question,
+            wrongAnswer: q.options[selected.value],
+            correctAnswer: q.options[q.correct]
+          });
         }
       } else {
-        mistakes.push({ question: q.question, wrongAnswer: "No answer", correctAnswer: q.options[q.correct] });
+        mistakes.push({
+          question: q.question,
+          wrongAnswer: "No answer",
+          correctAnswer: q.options[q.correct]
+        });
       }
     });
-  
+
     const endTime = new Date();
     const timeTaken = Math.floor((endTime - startTime) / 1000);
-  
+    const submissionDate = new Date().toLocaleString();
     const user = localStorage.getItem("loggedInUser") || "guest";
-    const quizResults = JSON.parse(localStorage.getItem("quizResults") || "{}");
-  
-    if (!quizResults[user]) quizResults[user] = {};
-    const submissionDate = new Date().toLocaleString(); // Get readable date & time
- 
-quizResults[user][selectedQuiz] = {
-  score,
-  timeTaken,
-  mistakes,
-  submissionDate // ← Add this
-};
-  
-    localStorage.setItem("quizResults", JSON.stringify(quizResults));
-  
+
+    // Get previous results safely
+    let allResults = JSON.parse(localStorage.getItem("quizResults") || "[]");
+    if (!Array.isArray(allResults)) {
+      allResults = [];
+    }
+
+    // Store current result
+    allResults.push({
+      email: user,
+      quiz: selectedQuiz,
+      score,
+      timeTaken,
+      mistakes,
+      submissionDate
+    });
+
+    localStorage.setItem("quizResults", JSON.stringify(allResults));
+
+    // Display result
     scoreDisplay.textContent = `Score: ${score} / ${quizData.length}`;
     timeDisplay.textContent = `Time Taken: ${timeTaken} seconds`;
     mistakesList.innerHTML = mistakes.length
-      ? mistakes.map(m => `<li><strong>Q:</strong> ${m.question}<br><strong>Your answer:</strong> ${m.wrongAnswer}<br><strong>Correct:</strong> ${m.correctAnswer}</li>`).join('')
+      ? mistakes.map(m => `
+        <li><strong>Q:</strong> ${m.question}<br>
+        ❌ Your Answer: ${m.wrongAnswer}<br>
+        ✅ Correct: ${m.correctAnswer}</li>`).join('')
       : "<p>No mistakes! 🎉</p>";
-  
+
     resultBox.classList.remove("hidden");
     submitBtn.disabled = true;
-  
+
     const answeredCount = quizData.filter((_, i) => form.querySelector(`input[name="q${i}"]:checked`)).length;
     progressCount.textContent = `${answeredCount}/${quizData.length}`;
-
-    // Hide the quiz form after submission
     form.classList.add("hidden");
   }
+});
+
